@@ -1,4 +1,3 @@
-import React from 'react';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
@@ -20,4 +19,5 @@ FeedbackOptions.propTypes = {
     neutral: PropTypes.number.isRequired,
     bad: PropTypes.number.isRequired,
   }),
+  onLeaveFeedback: PropTypes.func.isRequired,
 };
