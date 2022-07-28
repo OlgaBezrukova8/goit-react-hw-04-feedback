@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Container, AccentColor } from './Statistics.styled';
 
 export const Statistics = ({
   good,
@@ -7,15 +8,25 @@ export const Statistics = ({
   total,
   positivePercentage,
 }) => (
-  <div>
+  <Container>
     <ul>
-      <li>Good: {good}</li>
-      <li>Netral: {neutral}</li>
-      <li>Bad: {bad}</li>
-      <li>Total: {total}</li>
-      <li>Positive Feedback: {positivePercentage}%</li>
+      <li>
+        Good: <AccentColor>{good}</AccentColor>
+      </li>
+      <li>
+        Netral: <AccentColor>{neutral}</AccentColor>
+      </li>
+      <li>
+        Bad: <AccentColor>{bad}</AccentColor>
+      </li>
+      <li>
+        Total: <AccentColor>{total}</AccentColor>
+      </li>
+      <li>
+        Positive Feedback: <AccentColor>{positivePercentage}%</AccentColor>
+      </li>
     </ul>
-  </div>
+  </Container>
 );
 
 Statistics.propTypes = {
