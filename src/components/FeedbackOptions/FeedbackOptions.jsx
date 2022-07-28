@@ -1,56 +1,23 @@
-import React, { Component } from 'react';
-import { Statistics } from '../Statistics/Statistics';
+import React from 'react';
+import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
-export class FeedbackOptions extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+  return (
+    <div>
+      {Object.keys(options).map(name => (
+        <button key={nanoid()} type="button" onClick={onLeaveFeedback}>
+          {name}
+        </button>
+      ))}
+    </div>
+  );
+};
 
-  onClickBtnGood = () => {
-    this.setState(PrevState => {
-      return {
-        good: PrevState.good + 1,
-      };
-    });
-  };
-
-  onClickBtnNeutral = () => {
-    this.setState(PrevState => {
-      return {
-        neutral: PrevState.neutral + 1,
-      };
-    });
-  };
-
-  onClickBtnBad = () => {
-    this.setState(PrevState => {
-      return {
-        bad: PrevState.bad + 1,
-      };
-    });
-  };
-
-  render() {
-    return (
-      <>
-        <title>Please leave feedback</title>
-
-        <span>{this.state.good}</span>
-        <span>{this.state.neutral}</span>
-        <span>{this.state.bad}</span>
-
-        <button onClick={this.onClickBtnGood}>Good</button>
-        <button onClick={this.onClickBtnNeutral}>Neutral</button>
-        <button onClick={this.onClickBtnBad}>Bad</button>
-        <Statistics
-          title="Statistics"
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-        />
-      </>
-    );
-  }
-}
+FeedbackOptions.propTypes = {
+  options: PropTypes.shape({
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+  }),
+};
