@@ -41,14 +41,9 @@ export class App extends Component {
       : 0;
   };
 
-  isBigEnough = value => {
-    return value > 0;
-  };
-
   render() {
     const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback(good, neutral, bad);
-    const renderStatistics = Object.values(this.state);
 
     return (
       <>
@@ -60,7 +55,7 @@ export class App extends Component {
         </Section>
 
         <Section title="Statistics">
-          {renderStatistics.filter(this.isBigEnough).length > 0 ? (
+          {total > 0 ? (
             <Statistics
               good={good}
               neutral={neutral}
